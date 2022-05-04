@@ -1,0 +1,33 @@
+server:
+  port: 8082
+
+spring:
+  data:
+    mongodb:
+      username: root
+      password: woonana123@
+      uri: mongodb://k6b104.p.ssafy.io:27017/chat
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: false
+  freemarker:
+    cache: false
+    template-loader-path: classpath:/templates
+    suffix: .ftl
+jpa:
+  generate-ddl: false
+  open-in-view: false
+  hibernate:
+    ddl-auto: validate # ???? ???? ?? ??????? ??
+  properties:
+    hibernate:
+      format_sql: true
+
+logging.level:
+  org.hibernate.SQL: debug  # ?? hibernate? ???? SQL? ??? ??? ??? ? ??(?????? ??!)
+  org.hibernate.type: trace

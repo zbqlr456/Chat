@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "spring.date.mongodb.host",
+      "type": "java.lang.String",
+      "description": "Description for spring.date.mongodb.host."
+  }
+] }
