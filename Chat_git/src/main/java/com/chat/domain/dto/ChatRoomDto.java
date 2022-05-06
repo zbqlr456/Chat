@@ -12,7 +12,7 @@ public class ChatRoomDto {
 
     public ChatRoom toEntity(){
         ChatRoom chatRoom = new ChatRoom();
-        chatRoom.setName(name);
+        chatRoom.setRoomName(name);
         return chatRoom;
     }
 

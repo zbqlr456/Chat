@@ -1,7 +1,7 @@
 package com.chat.domain.model;
 
 import com.chat.domain.dto.ChatDto;
-import lombok.*;
+import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
