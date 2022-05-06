@@ -1,20 +1,23 @@
 package com.chat.controller;
 
-import com.chat.domain.dto.ChatRoom;
-import com.chat.domain.service.ChatService;
+import com.chat.domain.dto.ChatRoomDto;
+import com.chat.domain.model.ChatRoom;
+import com.chat.domain.repository.ChatRoomRepository;
+import com.chat.domain.service.ChatRoomService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
-@Controller
+@RestController
 @RequestMapping("/chat")
 public class ChatRoomController {
 
-    private final ChatService chatService;
+    private final ChatRoomService chatRoomService;
+    private final ChatRoomRepository chatRoomRepository;
 
     /**
      * View 모델 생성
@@ -35,19 +38,18 @@ public class ChatRoomController {
     @GetMapping("/rooms")
     @ResponseBody
     public List<ChatRoom> room() {
-        return chatService.findAllRooms();
+        return chatRoomService.findAllRooms();
     }
 
     /**
      * 채팅방 생성
      *
-     * @param name
+     * @param chatRoomDto
      * @return
      */
     @PostMapping("/room")
-    @ResponseBody
-    public ChatRoom createRoom(@RequestParam String name) {
-        return chatService.createRoom(name);
+    public void createRoom(@RequestBody ChatRoomDto chatRoomDto) {
+        chatRoomRepository.save(chatRoomDto.toEntity());
     }
 
     /**
@@ -71,8 +73,8 @@ public class ChatRoomController {
      */
     @GetMapping("/room/{roomId}")
     @ResponseBody
-    public ChatRoom roomInfo(@PathVariable String roomId) {
-        return chatService.findRoomById(roomId);
+    public Optional<ChatRoom> roomInfo(@PathVariable String roomId) {
+        return chatRoomService.findRoomById(roomId);
     }
 }
 

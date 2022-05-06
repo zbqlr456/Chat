@@ -1,5 +1,6 @@
 package com.chat.domain.dto;
 
+import com.chat.domain.model.ChatRoom;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,5 +9,11 @@ import lombok.Setter;
 public class ChatRoomDto {
 
     private String name;
+
+    public ChatRoom toEntity(){
+        ChatRoom chatRoom = new ChatRoom();
+        chatRoom.setRoomName(name);
+        return chatRoom;
+    }
 
 }
