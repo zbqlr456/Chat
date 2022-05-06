@@ -1,11 +1,13 @@
 package com.chat.domain.repository;
 
+import com.chat.domain.model.ChatRoom;
 import com.chat.domain.model.Chatting;
-import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface ChattingRepository extends MongoRepository<Chatting, String> {
+import java.util.List;
 
-    Chatting findById(ObjectId id);
+public interface ChattingRepository extends MongoRepository<ChatRoom, String> {
+
+    List<ChatRoom> findAllByOrOrderByRoomIdDesc();
 
 }

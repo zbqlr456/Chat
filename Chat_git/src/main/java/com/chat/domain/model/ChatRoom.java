@@ -1,20 +1,17 @@
 package com.chat.domain.model;
 
-import lombok.*;
+import lombok.Data;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@Document(collation = "chatting")
-public class Chatting {
+@Document(collection = "chatRoom")
+public class ChatRoom {
 
     @Id
-    private ObjectId id;
+    private ObjectId roomId;
 
-    private long senderName;
-
-    private String sendContent;
-
+    private String roomName;
 
 }
