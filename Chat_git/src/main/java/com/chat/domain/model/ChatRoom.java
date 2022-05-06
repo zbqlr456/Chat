@@ -6,11 +6,11 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@Document(collation = "chatRoom")
+@Document(collection = "chatRoom")
 public class ChatRoom {
 
     @Id
-    private ObjectId roodId;
+    private ObjectId roomId;
 
     private String roomName;
 
