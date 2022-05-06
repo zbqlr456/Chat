@@ -2,11 +2,14 @@ server:
   port: 8082
 
 spring:
+#  data:
+#    mongodb:
+#      username: root
+#      password: woonana123@
+#      uri: mongodb://k6b104.p.ssafy.io:27017/chat
   data:
     mongodb:
-      username: root
-      password: woonana123@
-      uri: mongodb://k6b104.p.ssafy.io:27017/chat
+      uri: mongodb://localhost:27017/chat
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher

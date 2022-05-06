@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ChatMessage {
+public class ChatDto {
 
     // 메시지 타입 : 입장, 채팅
     public enum MessageType {
