@@ -1,15 +1,15 @@
 server:
-  port: 8082
+  port: 8081
 
 spring:
-#  data:
-#    mongodb:
-#      username: root
-#      password: woonana123@
-#      uri: mongodb://k6b104.p.ssafy.io:27017/chat
   data:
     mongodb:
-      uri: mongodb://localhost:27017/chat
+      host: k6b104.p.ssafy.io
+      port: 27017
+      database: chat
+      username: root
+      password: woonana123@
+      authentication-database: admin
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
@@ -22,15 +22,3 @@ spring:
     cache: false
     template-loader-path: classpath:/templates
     suffix: .ftl
-jpa:
-  generate-ddl: false
-  open-in-view: false
-  hibernate:
-    ddl-auto: validate # ???? ???? ?? ??????? ??
-  properties:
-    hibernate:
-      format_sql: true
-
-logging.level:
-  org.hibernate.SQL: debug  # ?? hibernate? ???? SQL? ??? ??? ??? ? ??(?????? ??!)
-  org.hibernate.type: trace

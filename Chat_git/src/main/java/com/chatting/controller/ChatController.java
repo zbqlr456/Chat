@@ -1,25 +1,25 @@
-package com.chat.controller;
+package com.chatting.controller;
 
-import com.chat.domain.dto.ChatDto;
+import com.chatting.domain.dto.ChatMessageDto;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+@Api(tags = "채팅 메세지")
 @RequiredArgsConstructor
-@Controller
+@RestController
 public class ChatController {
 
     private final SimpMessageSendingOperations messagingTemplate;
 
-    /**
-     * ENTER이면 입장하셨습니다 전송 or TALK이면 입력한 채팅 전송
-     *
-     * @param message
-     */
+    @ApiOperation(value = "채팅 메세지 전송")
     @MessageMapping("/chat/message")
-    public void message(ChatDto message) {
-        if (ChatDto.MessageType.ENTER.equals(message.getType()))
+    public void message(ChatMessageDto message) {
+        if (ChatMessageDto.MessageType.ENTER.equals(message.getType()))
             message.setMessage(message.getSender() + "님이 입장하셨습니다.");
         messagingTemplate.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
     }

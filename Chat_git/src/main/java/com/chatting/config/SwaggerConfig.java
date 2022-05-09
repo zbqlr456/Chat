@@ -1,4 +1,4 @@
-package com.chat.config;
+package com.chatting.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,26 +15,23 @@ import java.util.function.Predicate;
 @Configuration
 public class SwaggerConfig {
     private String version = "V1";
-    private String title = "Chat API" + version;
+    private String title = "Chatting API " + version;
 
     @Bean
     public Docket postsApi(){
-        return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("Chat")
+        return new Docket(DocumentationType.OAS_30)
+                .groupName("Chatting")
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.chat.controller"))
-                .paths(postPaths())
+                .apis(RequestHandlerSelectors.basePackage("com.chatting.controller"))
+                .paths(PathSelectors.any())
                 .build();
-    }
-    private Predicate<String> postPaths() {
-        return PathSelectors.any();
     }
 
     private ApiInfo apiInfo(){
-        return new ApiInfoBuilder().title(title).description("Chat API Reference for Developers")
+        return new ApiInfoBuilder().title(title).description("Chatting API Reference for Developers")
                 .contact(new Contact("ssafy","https://edu.ssafy.com","ssafy@ssafy.com"))
-                .license("Chat License")
+                .license("Chatting License")
                 .licenseUrl("ssafy@ssafy.com").version(version).build();
 
     }
